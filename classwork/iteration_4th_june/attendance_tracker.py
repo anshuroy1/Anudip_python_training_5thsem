@@ -8,6 +8,7 @@ while(attendance_count <= 30):
     #count the present student 
 
     if(student_present.lower()=="present"):
+         
          present_count += 1
     attendance_count += 1
 print("No of student:",present_count)

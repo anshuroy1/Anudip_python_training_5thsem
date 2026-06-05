@@ -5,6 +5,7 @@ n = int(input("enter a number: "))
 temp = n
 
 #count the number of digits
+
 digits = len(str(n))
 
 #variable to store sum of powers

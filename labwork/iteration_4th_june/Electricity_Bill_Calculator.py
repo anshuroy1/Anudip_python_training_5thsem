@@ -2,6 +2,7 @@
 units = int(input("Enter units consumed: "))
 
 # Calculate bill
+
 if units <= 100:
     bill = units * 5
     category = "Low Consumption"

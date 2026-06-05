@@ -12,5 +12,5 @@ while(attendance_count <= 30):
          present_count += 1
     attendance_count += 1
 print("No of student:",present_count)
-print("No of absent:",total_student - present_count)
+print("No of absent:", (total_students - present_count))
 

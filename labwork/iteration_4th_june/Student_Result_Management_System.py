@@ -6,6 +6,7 @@ m4 = int(input("Enter marks of Subject 4: "))
 m5 = int(input("Enter marks of Subject 5: "))
 
 # Calculate total and percentage
+
 total = m1 + m2 + m3 + m4 + m5
 percentage = total / 5
 

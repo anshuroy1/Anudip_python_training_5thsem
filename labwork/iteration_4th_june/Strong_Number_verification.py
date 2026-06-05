@@ -4,6 +4,7 @@ n = int(input("Enter a number: "))
 # Store original number
 temp = n
 
+
 # Initialize sum
 sum = 0
 

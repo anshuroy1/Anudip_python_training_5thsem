@@ -11,6 +11,7 @@
 # • Count passed and failed products. 
 # • Calculate pass percentage. 
 # • Stop checking if 3 failures are found.
+
 # Product IDs and quality status
 products = [
     (101, "Pass"),

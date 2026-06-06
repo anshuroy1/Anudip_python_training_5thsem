@@ -1,4 +1,16 @@
 # Employee records stored as tuples
+ #Tasks
+#Write a Python program to:
+#1. Display details of employees scoring 80 or above. 
+#2. Count the number of employees who need improvement (score below 60). 
+#3. Find the employee with the highest score. 
+#4. Create a list containing the names of all employees scoring above 75. 
+#5. Display the performance category for each employee: 
+#o 90 and above → Excellent 
+#o 75 to 89 → Good 
+#o 60 to 74 → Average 
+#o Below 60 → Needs Improv 
+ 
 employees = (
     ("E101", "Anuj", 92),
     ("E102", "Rahul", 76),

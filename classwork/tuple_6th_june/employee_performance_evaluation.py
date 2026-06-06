@@ -24,6 +24,7 @@ print("Employees Scoring 80 or Above:")
 for emp in employees:
     if emp[2] >= 80:   # score is at index 2
         print(emp[0], emp[1], emp[2])
+        
 
 # 2. Count employees needing improvement (score below 60)
 count = 0

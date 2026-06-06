@@ -30,6 +30,7 @@ print("Waiting List Passengers:")
 for name, status in passengers:
     if status == "Waiting":
         print(name)
+        
 
 # Count confirmed and waiting passengers
 for name, status in passengers:

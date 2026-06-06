@@ -25,6 +25,7 @@ pass_count = 0
 fail_count = 0
 fail_ids = []
 
+
 # Display failed product IDs
 for pid, status in products:
     if status == "Fail":

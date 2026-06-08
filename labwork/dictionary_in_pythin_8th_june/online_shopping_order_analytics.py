@@ -36,8 +36,8 @@ sales = {
 #--------------------------------------------------
 # to display products sold more than 20 times   
 print("Products sold more than 20 times : ")
-for product, quantity in sales.items():
-    if quantity > 20:
+for product, sale in sales.items():
+    if sale > 20:
         print(product)  
 #--------------------------------------------------
 # to find the best-selling product

@@ -49,7 +49,7 @@ for city, temp in temperature.items():
     if temp > highest_temp:
         highest_temp = temp
         hottest_city = city
-print("Hottest city : ", hottest_city)
+print(f"Hottest city :  {hottest_city} ({highest_temp}°C)")
 #--------------------------------------------------
 
 
@@ -60,7 +60,7 @@ for city, temp in temperature.items():
     if lowest_temp == 0 or temp < lowest_temp:
         lowest_temp = temp
         coolest_city = city
-print("Coolest city : ", coolest_city)
+print(f"Coolest city : {coolest_city} ({lowest_temp}°C)")
 #--------------------------------------------------
 
 
@@ -94,9 +94,9 @@ Delhi
 Jaipur
 Ahmedabad
 
-Hottest city :  Ahmedabad
-Coolest city :  Bengaluru
-Average temperature :  36.5
+Hottest city :  Ahmedabad (43°C)
+Coolest city :  Bengaluru (28°C)
+Average temperature :  36.8
 Pleasant cities (temperature < 35°C) :  ['Mumbai', 'Bengaluru', 'Pune']
 
 Number of cities with temperature between 35°C and 40°C :  4

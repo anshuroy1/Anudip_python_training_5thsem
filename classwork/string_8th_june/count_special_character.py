@@ -1,5 +1,5 @@
 
-
+#count the number of special characters in the sentance.
 sentance = input("Enter the sentance: ")
 special_char = 0
 for i in sentance:

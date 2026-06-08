@@ -98,6 +98,19 @@ for unit in units.values():
         campaign_count += 1
 print("Number of houses eligible for energy-saving campaign (consumption > 300 units) : ", campaign_count)
 
-
+'''
+output:
+Houses consuming more than 400 units :
+House103
+House106
+House110
+Highest-consuming house : House110 (600 units)
+Lowest-consuming house : House109 (145 units)   
+Total units consumed :  3200
+Houses with low consumption (< 200 units): ['House102', 'House105', 'House109']
+Houses with medium consumption (200-400 units): ['House101', 'House104', 'House107', 'House108']
+Houses with high consumption (> 400 units): ['House103', 'House106', '  House110']
+Number of houses eligible for energy-saving campaign (consumption > 300 units) :    5   
+'''
 
 

@@ -4,3 +4,5 @@ count = 0
 for i in sentance:
     count = count + 1
 print("Number of characters in the sentance : ", count)
+
+

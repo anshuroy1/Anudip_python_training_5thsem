@@ -1,7 +1,7 @@
 #write a program which provides menu to user for selecting two dimensional figure (square, rectangle, circle) and after selecting the figure user is again asked to provide the input of corresponding the data for the figure and after that again providing the menu to select operation (area or perimeter) and the task will be repeated untill user choose exit option and this will done using custom module import 
 
 #import the module
-from twoD_figure import *
+from geometry import *
 
 #creating a function for choosing operation
 def choose_operation():

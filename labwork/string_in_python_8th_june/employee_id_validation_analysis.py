@@ -61,3 +61,14 @@ if valid:
     print("Employee ID is VALID")
 else:
     print("Employee ID is INVALID")
+
+'''OUTPUT
+Employee ID: EMP2026ANUJ458
+Uppercase Letters: 7
+Digits: 7
+Joining Year: 2026
+Employee Name: ANUJ
+Digit List: [2, 0, 2, 6, 4, 5, 8]
+Sum of Digits: 27
+Employee ID is VALID
+'''

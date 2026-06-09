@@ -22,6 +22,7 @@ lower=0
 digit=0
 special=0
 
+#first check whether digit and special ch exist or not
 digits_list=[]
 special_list=[]
 

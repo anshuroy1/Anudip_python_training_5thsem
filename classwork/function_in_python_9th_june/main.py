@@ -4,6 +4,7 @@
 from geometry import *
 
 #creating a function for choosing operation
+
 def choose_operation():
     
     #to choose operation
@@ -15,8 +16,9 @@ def choose_operation():
     if operation<1 or operation>2:
         exit("invalid operation")
         
-    
     return operation
+
+
 
 #main program
 while(True):

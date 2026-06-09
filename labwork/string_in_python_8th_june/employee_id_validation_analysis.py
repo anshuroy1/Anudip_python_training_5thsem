@@ -14,6 +14,7 @@
 # 6. Create a list containing all digits present in the ID.  
 # 7. Find the sum of all digits present in the ID.  
 # 8. Display whether the ID is valid or invalid. 
+
 #Program for employee id validation and analysis system
 emp_id = "EMP2026ANUJ458"
 

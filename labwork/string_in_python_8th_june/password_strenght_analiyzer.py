@@ -56,3 +56,16 @@ print("Special Characters:",special)
 print("Digits Present:",digits_list)
 print("Special Characters Present:",special_list)
 print("Password Strength:",strength)
+
+
+'''OUTPUT
+Password: Python@2026!
+Uppercase Letters: 1
+Lowercase Letters: 5
+Digits: 4
+Special Characters: 1
+Digits Present: ['2', '0', '2', '6']
+Special Characters Present: ['@']
+Password Strength: Strong
+
+'''

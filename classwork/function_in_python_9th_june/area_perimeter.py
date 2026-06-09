@@ -97,4 +97,4 @@ while(True):
 
         #to calculate perimeter of circle    
         elif operation==2:
-            print("perimeter of circle:",circle_circumference(radius))
+            print("perimeter of circle:",circle_perimeter(radius))

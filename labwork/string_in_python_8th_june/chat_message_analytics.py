@@ -11,6 +11,7 @@
 # 7. Display all words starting with a vowel.  
 # 8. Count the number of vowels and consonants. 
 
+
 #Program for chat  message analytics
 message="Python is awesome and Python is easy to learn"
 

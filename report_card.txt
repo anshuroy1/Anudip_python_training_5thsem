@@ -1,0 +1,11 @@
+Grades for all students:
+Anuj : A
+Rahul : B
+Priya : B
+Neha : F
+Amit : C
+Sneha : A
+Karan : B
+Pooja : C
+Rohit : F
+Anjali : A

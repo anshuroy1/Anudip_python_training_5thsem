@@ -12,7 +12,7 @@ try:
     #check three sides can form a triangle or not
     #by triangle inequality theorem
     elif (side1 + side2 <= side3) or (side2 + side3 <= side1) or (side1 + side3 <= side2):
-        print("cannot form a validtriangle")
+        print("cannot form a valid triangle")
 
     else:
         #heron's formula

@@ -1,0 +1,7 @@
+ Smart Task Management System
+
+The Smart Task Management System is a Python-based application designed to help users organize and manage their daily tasks efficiently. The system allows users to add new tasks, view existing tasks, update task status, search for specific tasks, and delete completed or unwanted tasks. Each task is stored with relevant information such as task name, priority level, due date, and completion status.
+
+The application provides a menu-driven interface that enables users to perform various operations easily. Input validation is used to ensure that the data entered by the user is correct and meaningful. The system can also categorize tasks as Pending or Completed, helping users track their progress effectively.
+
+By automating task organization and monitoring, the Smart Task Management System improves productivity, reduces the chances of missing important deadlines, and provides a simple way to manage personal or professional tasks. The project demonstrates the use of Python concepts such as functions, lists, dictionaries, loops, conditional statements, validation, and file handling.

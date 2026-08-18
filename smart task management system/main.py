@@ -342,6 +342,109 @@ def update_task():
     # Display message if Task ID was not found
     print("Task ID not found.")
 
+# ============================================================
+# DELETE TASK
+# ============================================================
+
+# Function to delete an existing task
+def delete_task():
+
+    print("\n--- Delete Task ---")
+
+    # Check whether any task exists
+    if len(tasks) == 0:
+        print("No tasks available to delete.")
+        return
+
+    # Ask the user for the Task ID
+    try:
+        task_id = int(input("Enter Task ID to delete: "))
+
+    except ValueError:
+        # Handle non-numeric Task ID
+        print("Invalid input! Task ID must be a number.")
+        return
+
+    # Search for the task with the given ID
+    for task in tasks:
+
+        if task.task_id == task_id:
+
+            # Ask for confirmation before deleting
+            print("\nTask found:")
+            print("Title :", task.title)
+            print("Priority :", task.priority)
+
+            confirmation = input(
+                "Are you sure you want to delete this task? (Yes/No): "
+            ).strip().lower()
+
+            # Delete the task if user confirms
+            if confirmation == "yes":
+
+                tasks.remove(task)
+
+                print("Task deleted successfully!")
+
+            # Cancel deletion
+            elif confirmation == "no":
+
+                print("Task deletion cancelled.")
+
+            else:
+
+                print("Invalid choice! Please enter Yes or No.")
+
+            # Stop searching after finding the task
+            return
+
+    # Display message if Task ID was not found
+    print("Task ID not found.")
+
+# ============================================================
+# COMPLETE TASK
+# ============================================================
+
+# Function to mark a task as completed
+def complete_task():
+
+    print("\n--- Complete Task ---")
+
+    # Check whether any task exists
+    if len(tasks) == 0:
+        print("No tasks available.")
+        return
+
+    # Ask the user for the Task ID
+    try:
+        task_id = int(input("Enter Task ID to complete: "))
+
+    except ValueError:
+        # Handle non-numeric Task ID
+        print("Invalid input! Task ID must be a number.")
+        return
+
+    # Search for the task with the given ID
+    for task in tasks:
+
+        if task.task_id == task_id:
+
+            # Check if task is already completed
+            if task.status == "Completed":
+                print("Task is already completed.")
+                return
+
+            # Change task status
+            task.status = "Completed"
+
+            # Display success message
+            print("Task marked as completed successfully!")
+
+            return
+
+    # Display message if Task ID was not found
+    print("Task ID not found.")
+
 
 # ============================================================
 # MAIN PROGRAM
@@ -355,7 +458,9 @@ while True:
     print("1. Add Task")
     print("2. View Tasks")
     print("3. Update Task")
-    print("4. Exit")
+    print("4. Delete Task")
+    print("5. Complete Task")
+    print("6. Exit")
 
     # Take menu choice from the user
     choice = input("Enter your choice: ").strip()
@@ -378,8 +483,19 @@ while True:
         # Update an existing task
          update_task()
 
-    # Check whether the user wants to exit
+    # Check whether the user wants to delete a task
     elif choice == "4":
+
+        # Delete an existing task
+        delete_task()
+ 
+    elif choice == "5":
+
+        # Mark a task as completed
+        complete_task()
+
+    # Check whether the user wants to exit
+    elif choice == "6":
 
         # Display exit message
         print(
@@ -395,5 +511,5 @@ while True:
         # Handle invalid menu choice
         print(
             "Invalid choice! "
-            "Please enter 1, 2 ,3 or 4."
+            "Please enter 1, 2, 3, 4 ,5 or 6."
         )

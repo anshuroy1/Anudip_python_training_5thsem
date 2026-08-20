@@ -563,6 +563,261 @@ def task_alerts():
         print("No upcoming tasks.")
 
 
+# ========================================================
+# SMART TASK RECOMMENDATION
+# ========================================================
+
+def smart_task_recommendation():
+    print("\n--- Smart Task Recommendation ---")
+
+    # Check if tasks are available
+    if len(tasks) == 0:
+        print("No tasks available.")
+        return
+
+    today = datetime.now().date()
+    pending_tasks = []
+
+    # Check all pending tasks
+    for task in tasks:
+        if task.status != "Pending":
+            continue
+
+        # Convert due date into date object
+        try:
+            due_date = datetime.strptime(task.due_date, "%d-%m-%Y").date()
+        except ValueError:
+            print("Invalid due date found for Task ID:", task.task_id)
+            continue
+
+        # Calculate remaining days
+        days_left = (due_date - today).days
+
+        # Assign score according to priority
+        if task.priority == "High":
+            priority_score = 3
+        elif task.priority == "Medium":
+            priority_score = 2
+        elif task.priority == "Low":
+            priority_score = 1
+        else:
+            print("Invalid priority found for Task ID:", task.task_id)
+            continue
+
+        # Assign score according to deadline
+        if days_left < 0:
+            deadline_score = 3
+        elif days_left <= 1:
+            deadline_score = 3
+        elif days_left <= 3:
+            deadline_score = 2
+        else:
+            deadline_score = 1
+
+        # Calculate total recommendation score
+        total_score = priority_score + deadline_score
+
+        # Store score, task and remaining days
+        pending_tasks.append((total_score, task, days_left))
+
+    # Check if pending tasks are available
+    if len(pending_tasks) == 0:
+        print("No pending tasks available.")
+        return
+
+    # Sort tasks by highest score
+    pending_tasks.sort(key=lambda x: x[0], reverse=True)
+
+    # Select the highest-scoring task
+    recommended_score, recommended_task, days_left = pending_tasks[0]
+
+    # Display recommended task
+    print("\n⭐ Recommended Task:")
+    print("------------------------------")
+    print("Task ID     :", recommended_task.task_id)
+    print("Title       :", recommended_task.title)
+    print("Priority    :", recommended_task.priority)
+    print("Due Date    :", recommended_task.due_date)
+    print("Score       :", recommended_score)
+
+    # Display reason for recommendation
+    if days_left < 0:
+        print("Reason      : Task is overdue.")
+    elif days_left == 0:
+        print("Reason      : Task is due today.")
+    elif days_left == 1:
+        print("Reason      : Task is due tomorrow.")
+    elif recommended_task.priority == "High":
+        print("Reason      : High priority task.")
+    else:
+        print("Reason      : Based on priority and deadline.")
+
+    print("------------------------------")
+
+# ========================================================
+# SEARCH AND FILTER TASKS
+# ========================================================
+
+def search_and_filter_tasks():
+    print("\n--- Search and Filter Tasks ---")
+
+    # Check if tasks are available
+    if len(tasks) == 0:
+        print("No tasks available.")
+        return
+
+    while True:
+        print("\n1. Search by Task ID")
+        print("2. Search by Title")
+        print("3. Filter by Priority")
+        print("4. Filter by Status")
+        print("5. Back")
+
+        choice = input("Enter your choice: ").strip()
+
+        # Search task by ID
+        if choice == "1":
+            try:
+                task_id = int(input("Enter Task ID to search: "))
+
+                if task_id <= 0:
+                    print("Task ID must be greater than 0.")
+                    continue
+
+            except ValueError:
+                print("Invalid input! Task ID must be a number.")
+                continue
+
+            found = False
+
+            for task in tasks:
+                if task.task_id == task_id:
+                    print("\n--- Task Found ---")
+                    print("Task ID     :", task.task_id)
+                    print("Title       :", task.title)
+                    print("Description :", task.description)
+                    print("Priority    :", task.priority)
+                    print("Due Date    :", task.due_date)
+                    print("Status      :", task.status)
+
+                    found = True
+                    break
+
+            if not found:
+                print("Task ID not found.")
+
+        # Search task by title
+        elif choice == "2":
+            title = input("Enter task title to search: ").strip()
+
+            if title == "":
+                print("Search title cannot be empty.")
+                continue
+
+            found = False
+
+            print("\n--- Search Results ---")
+
+            for task in tasks:
+                # Case-insensitive title search
+                if title.lower() in task.title.lower():
+                    print("\n------------------------------")
+                    print("Task ID     :", task.task_id)
+                    print("Title       :", task.title)
+                    print("Description :", task.description)
+                    print("Priority    :", task.priority)
+                    print("Due Date    :", task.due_date)
+                    print("Status      :", task.status)
+                    print("------------------------------")
+
+                    found = True
+
+            if not found:
+                print("No task found with this title.")
+
+        # Filter tasks by priority
+        elif choice == "3":
+            priority = input(
+                "Enter Priority (High/Medium/Low): "
+            ).strip().lower()
+
+            if priority == "high":
+                priority = "High"
+            elif priority == "medium":
+                priority = "Medium"
+            elif priority == "low":
+                priority = "Low"
+            else:
+                print(
+                    "Invalid priority! Choose High, Medium or Low."
+                )
+                continue
+
+            found = False
+
+            print("\n--- Priority Filter Results ---")
+
+            for task in tasks:
+                if task.priority == priority:
+                    print("\n------------------------------")
+                    print("Task ID     :", task.task_id)
+                    print("Title       :", task.title)
+                    print("Description :", task.description)
+                    print("Priority    :", task.priority)
+                    print("Due Date    :", task.due_date)
+                    print("Status      :", task.status)
+                    print("------------------------------")
+
+                    found = True
+
+            if not found:
+                print("No tasks found with", priority, "priority.")
+
+        # Filter tasks by status
+        elif choice == "4":
+            status = input(
+                "Enter Status (Pending/Completed): "
+            ).strip().lower()
+
+            if status == "pending":
+                status = "Pending"
+            elif status == "completed":
+                status = "Completed"
+            else:
+                print(
+                    "Invalid status! Choose Pending or Completed."
+                )
+                continue
+
+            found = False
+
+            print("\n--- Status Filter Results ---")
+
+            for task in tasks:
+                if task.status == status:
+                    print("\n------------------------------")
+                    print("Task ID     :", task.task_id)
+                    print("Title       :", task.title)
+                    print("Description :", task.description)
+                    print("Priority    :", task.priority)
+                    print("Due Date    :", task.due_date)
+                    print("Status      :", task.status)
+                    print("------------------------------")
+
+                    found = True
+
+            if not found:
+                print("No", status, "tasks found.")
+
+        # Exit search and filter menu
+        elif choice == "5":
+            print("Returning to main menu.")
+            return
+
+        else:
+            print("Invalid choice! Please choose 1 to 5.")
+
+
 # ============================================================
 # MAIN PROGRAM
 # ============================================================
@@ -578,7 +833,9 @@ while True:
     print("4. Delete Task")
     print("5. Complete Task")
     print("6. Task Alerts")
-    print("7. Exit")
+    print("7. Smart Task Recommendation")
+    print("8. Search and Filter Tasks")
+    print("9. Exit")
 
     # Take menu choice from the user
     choice = input("Enter your choice: ").strip()
@@ -619,6 +876,16 @@ while True:
         task_alerts()
 
     elif choice == "7":
+         
+        # Show smart task recommendation
+        smart_task_recommendation()
+
+    elif choice == "8":
+
+        # Search and filter tasks
+        search_and_filter_tasks()
+
+    elif choice == "9":
 
         # Display exit message
         print(
@@ -634,5 +901,5 @@ while True:
         # Handle invalid menu choice
         print(
             "Invalid choice! "
-            "Please enter 1, 2, 3, 4, 5, 6 or 7."
+            "Please enter 1, 2, 3, 4, 5, 6,7 or 8."
         )

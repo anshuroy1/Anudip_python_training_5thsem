@@ -445,6 +445,123 @@ def complete_task():
     # Display message if Task ID was not found
     print("Task ID not found.")
 
+# ============================================================
+# TASK ALERTS
+# ============================================================
+
+# Function to show overdue and upcoming tasks
+def task_alerts():
+
+    print("\n--- Task Alerts ---")
+
+    # Check whether any task exists
+    if len(tasks) == 0:
+        print("No tasks available.")
+        return
+
+    # Get today's date
+    today = datetime.now().date()
+
+    # Variables to track tasks
+    overdue_found = False
+    upcoming_found = False
+
+    # ========================================================
+    # OVERDUE TASKS
+    # ========================================================
+
+    print("\n⚠️ Overdue Tasks:")
+
+    for task in tasks:
+
+        try:
+            # Convert stored due date into date object
+            due_date = datetime.strptime(
+                task.due_date,
+                "%d-%m-%Y"
+            ).date()
+
+        except ValueError:
+            # Handle invalid stored date
+            print(
+                "Invalid due date found for Task ID:",
+                task.task_id
+            )
+            continue
+
+        # Check for overdue pending task
+        if due_date < today and task.status == "Pending":
+
+            print(
+                "-",
+                task.title,
+                "(Due:",
+                task.due_date + ")"
+            )
+
+            overdue_found = True
+
+    # If no overdue task exists
+    if not overdue_found:
+        print("No overdue tasks.")
+
+    # ========================================================
+    # UPCOMING TASKS
+    # ========================================================
+
+    print("\n📅 Upcoming Tasks:")
+
+    for task in tasks:
+
+        try:
+            # Convert stored due date into date object
+            due_date = datetime.strptime(
+                task.due_date,
+                "%d-%m-%Y"
+            ).date()
+
+        except ValueError:
+            # Skip task if date is invalid
+            continue
+
+        # Calculate number of days remaining
+        days_left = (due_date - today).days
+
+        # Show pending tasks due within 7 days
+        if 0 <= days_left <= 7 and task.status == "Pending":
+
+            if days_left == 0:
+
+                print(
+                    "-",
+                    task.title,
+                    "(Due Today)"
+                )
+
+            elif days_left == 1:
+
+                print(
+                    "-",
+                    task.title,
+                    "(Due Tomorrow)"
+                )
+
+            else:
+
+                print(
+                    "-",
+                    task.title,
+                    "(Due in",
+                    days_left,
+                    "days)"
+                )
+
+            upcoming_found = True
+
+    # If no upcoming task exists
+    if not upcoming_found:
+        print("No upcoming tasks.")
+
 
 # ============================================================
 # MAIN PROGRAM
@@ -460,7 +577,8 @@ while True:
     print("3. Update Task")
     print("4. Delete Task")
     print("5. Complete Task")
-    print("6. Exit")
+    print("6. Task Alerts")
+    print("7. Exit")
 
     # Take menu choice from the user
     choice = input("Enter your choice: ").strip()
@@ -497,6 +615,11 @@ while True:
     # Check whether the user wants to exit
     elif choice == "6":
 
+        # Show overdue and upcoming tasks
+        task_alerts()
+
+    elif choice == "7":
+
         # Display exit message
         print(
             "\nThank you for using "
@@ -511,5 +634,5 @@ while True:
         # Handle invalid menu choice
         print(
             "Invalid choice! "
-            "Please enter 1, 2, 3, 4 ,5 or 6."
+            "Please enter 1, 2, 3, 4, 5, 6 or 7."
         )
